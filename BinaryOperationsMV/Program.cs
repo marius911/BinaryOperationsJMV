@@ -23,7 +23,47 @@ namespace BinaryOperations
         const int OperationBinaryMultiply = 15;
         const int OperationBinaryDivide = 16;
 
-        public static void Main()
+        public static bool BinaryLessThan(byte[] firstBinaryNumber, byte[] secondBinaryNumber)
+        {
+            if (firstBinaryNumber == null)
+            {
+                throw new ArgumentNullException(nameof(firstBinaryNumber));
+            }
+
+            if (secondBinaryNumber == null)
+            {
+                throw new ArgumentNullException(nameof(secondBinaryNumber));
+            }
+
+            int firstLength = GetBinaryNumberRealLength(firstBinaryNumber);
+            int secondLength = GetBinaryNumberRealLength(secondBinaryNumber);
+
+            if (firstLength < secondLength)
+            {
+                return true;
+            }
+
+            if (firstLength > secondLength)
+            {
+                return false;
+            }
+
+            for (int i = secondLength - 1; i >= 0; i--)
+            {
+                if (firstBinaryNumber[i] < secondBinaryNumber[i])
+                {
+                    return true;
+                }
+                else if (firstBinaryNumber[i] > secondBinaryNumber[i])
+                {
+                    return false;
+                }
+            }
+
+            return false;
+        }
+
+        static void Main()
         {
             if (int.TryParse(Console.ReadLine(), out int operation) && operation >= OperationConvertToBinary && operation <= OperationBinaryDivide)
             {
@@ -37,7 +77,7 @@ namespace BinaryOperations
             Console.Read();
         }
 
-        public static void ExecuteOperation(int operation)
+        static void ExecuteOperation(int operation)
         {
             if (operation >= OperationConvertToBinary && operation <= OperationConvertFromBinary)
             {
@@ -177,36 +217,6 @@ namespace BinaryOperations
                     return !BinaryLessThan(firstNumber, secondNumber) && !BinaryLessThan(secondNumber, firstNumber);
                 case OperationBinaryNotEqual:
                     return BinaryLessThan(firstNumber, secondNumber) || BinaryLessThan(secondNumber, firstNumber);
-            }
-
-            return false;
-        }
-
-        static bool BinaryLessThan(byte[] firstBinaryNumber, byte[] secondBinaryNumber)
-        {
-            int firstLength = GetBinaryNumberRealLength(firstBinaryNumber);
-            int secondLength = GetBinaryNumberRealLength(secondBinaryNumber);
-
-            if (firstLength < secondLength)
-            {
-                return true;
-            }
-
-            if (firstLength > secondLength)
-            {
-                return false;
-            }
-
-            for (int i = secondLength - 1; i >= 0; i--)
-            {
-                if (firstBinaryNumber[i] < secondBinaryNumber[i])
-                {
-                    return true;
-                }
-                else if (firstBinaryNumber[i] > secondBinaryNumber[i])
-                {
-                    return false;
-                }
             }
 
             return false;
