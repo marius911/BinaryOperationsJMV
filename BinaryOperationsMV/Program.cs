@@ -23,7 +23,7 @@ namespace BinaryOperations
         const int OperationBinaryMultiply = 15;
         const int OperationBinaryDivide = 16;
 
-        static void Main()
+        public static void Main()
         {
             if (int.TryParse(Console.ReadLine(), out int operation) && operation >= OperationConvertToBinary && operation <= OperationBinaryDivide)
             {
@@ -37,7 +37,7 @@ namespace BinaryOperations
             Console.Read();
         }
 
-        static void ExecuteOperation(int operation)
+        public static void ExecuteOperation(int operation)
         {
             if (operation >= OperationConvertToBinary && operation <= OperationConvertFromBinary)
             {
