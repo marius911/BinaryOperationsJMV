@@ -2,7 +2,7 @@
 
 namespace BinaryOperations
 {
-    class Program
+    public class Program
     {
         const int NumericalBase = 2;
 

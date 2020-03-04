@@ -17,4 +17,5 @@
     <ProjectReference Include="..\BinaryOperationsMV\BinaryOperations.csproj" />
   </ItemGroup>
 
+
 </Project>
